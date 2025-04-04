@@ -1,0 +1,479 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #f9fafb, #eef1f5);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+
+/* Cabeçalho */
+.main-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-radius: 20px 20px 6px 0;
+ 
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #4b5563;
+  transition: color 0.3s;
+}
+
+.logo:hover {
+  color: #1f2937;
+}
+
+.kanban-board {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.font-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.font-controls button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.font-controls button:hover {
+  background-color: #2563eb;
+}
+
+
+.kanban-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-height: 400px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kanban-column:hover {
+  transform: translateY(-4px) ;
+ 
+}
+.column {
+  background: #ffffff;
+  border-bottom: 3px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.column .counter {
+  background: #eee;
+  color: #333;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.icon-add {
+  border: none;
+  background: none;
+  font-size: 22px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon-add:hover {
+  color: #333;
+}
+
+.a-fazer .column { border-bottom: 4px solid #8e44ad; color: #8e44ad; }
+.fazendo .column { border-bottom: 4px solid #2980b9; color: #2980b9; }
+.concluido .column { border-bottom: 4px solid #27ae60; color: #27ae60; }
+
+
+.card-tasks {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  position: relative;
+  flex-grow: 1;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.task-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px; /* Reduzindo a largura do padding */
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  width: fit-content; /* Mantém apenas o necessário */
+  margin: 15px 0 0 10px; /* Move mais para a esquerda */
+}
+
+.task-button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+#addTaskBtn,
+#updateTaskBtn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: block;
+  margin: 15px auto 0; 
+}
+
+#addTaskBtn:hover,
+#updateTaskBtn:hover {
+  background-color: #2563eb;
+}
+
+#addTaskBtn,
+#updateTaskBtn {
+  display: block;
+  margin-left: auto;
+  margin-top: 15px;
+}
+
+
+.icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.task-card {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  padding: 0.625rem; 
+  margin-bottom: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  cursor: grab;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  
+
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.task-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #2d2d2d;
+}
+
+.task-card .task-text {
+  margin-top: 6px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.task-card .footer {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: #999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  background-color: #fca5a5; /* vermelho suave */
+  color: #7f1d1d; /* texto em vermelho escuro para contraste */
+  padding: 3px 6px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.task-card .menu-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+  display: none;
+}
+
+.task-card:hover .menu-btn {
+  display: block;
+}
+
+.task-card .menu-options {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 120px;
+}
+
+.task-card .menu-options button {
+  background: none;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #444;
+  transition: background 0.2s;
+}
+
+.task-card .menu-options button:hover {
+  background-color: #f5f5f5;
+}
+
+.task-card i {
+  color: #888;
+  margin-right: 6px;
+}
+
+.description-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #777;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.description-header i {
+  font-size: 12px;
+  color: #999;
+}
+
+.task-text {
+  font-size: 13px;
+  color: #333;
+  margin: 4px 0 10px 0;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Inter', sans-serif;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+  color: #444;
+}
+
+input,
+textarea {
+  width: 90%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+}.kanban-tip {
+  background-color: #f1f5f9;
+  color: #555;
+  font-size: 13px;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 20px auto 10px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+.kanban-tip i {
+  font-size: 14px;
+  color: #5b6169;
+}
+
+
+/* Rodapé */
+.main-footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.02);
+  border-radius: 0 0 20px 20px;
+}
+
+
+.main-footer {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 900px) {
+  .kanban-board {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kanban-column {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .kanban-column {
+    width: 100%;
+  }
+}

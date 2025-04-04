@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="icon" href="img.png" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="main-header">
+
+        <div class="container">
+            <a class="logo">Quadro Kaban</a>
+            <div class="font-controls" aria-label="Ajuste de fonte">
+                <button onclick="adjustFontSize(1)" aria-label="Aumentar fonte">A+</button>
+                <button onclick="adjustFontSize(-1)" aria-label="Diminuir fonte">A-</button>
+              </div>
+              
+        </div>
+    </header>
+
+    <main>
+        <div class="kanban-tip">
+            Dica: clique e segure em uma tarefa para arrastar e mudar de fase
+            <i class="fas fa-hand-pointer"></i>
+
+        </div>
+
+        <div class="kanban-board">
+            <!-- Coluna "A Fazer" -->
+            <div class="kanban-column a-fazer">
+                <div class="column">
+                    <span>A Fazer <span class="counter">0</span></span>
+                    <button class="icon-add" title="Adicionar tarefa" data-column="a-fazer">+</button>
+                </div>
+                <div class="tasks"></div>
+                <button class="task-button" data-column="a-fazer">
+                    <span class="icon">+</span> Nova tarefa
+                </button>
+            </div>
+
+            <!-- Coluna "Fazendo" -->
+            <div class="kanban-column fazendo">
+                <div class="column">
+                    <span>Fazendo <span class="counter">0</span></span>
+                    <button class="icon-add" title="Adicionar tarefa" data-column="fazendo">+</button>
+                </div>
+                <div class="tasks"></div>
+            </div>
+
+            <!-- Coluna "Concluído" -->
+            <div class="kanban-column concluido">
+                <div class="column">
+                    <span>Concluído <span class="counter">0</span></span>
+                    <button class="icon-add" title="Adicionar tarefa" data-column="concluido">+</button>
+                </div>
+                <div class="tasks"></div>
+            </div>
+        </div>
+
+        <!-- Modal para Nova Tarefa / Edição -->
+        <div id="taskModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Nova Tarefa</h2>
+                <label for="taskTitle">Título:</label>
+                <input type="text" id="taskTitle" placeholder="Digite o título..." required>
+                <label for="taskDesc">Descrição:</label>
+                <textarea id="taskDesc" placeholder="Digite a descrição..."></textarea>
+                <label for="taskDate">Data:</label>
+                <input type="date" id="taskDate">
+                <button id="addTaskBtn">Confirmar</button>
+            </div>
+        </div>
+
+        <!-- Modal Editar -->
+        <div id="editTaskModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close close-edit">&times;</span>
+                <h2 class="modal-title">Tarefa</h2>
+
+                <label for="editTaskTitle">Título:</label>
+                <input type="text" id="editTaskTitle" placeholder="Digite o título..." required>
+
+                <label for="editTaskDesc">Descrição:</label>
+                <textarea id="editTaskDesc" placeholder="Digite a descrição..."></textarea>
+
+                <label for="editTaskDate">Data:</label>
+                <input type="date" id="editTaskDate">
+
+                <button id="updateTaskBtn">Atualizar</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+    </footer>
+
+    <script src="js/script.js"></script>
+
+
+</body>
+
+
+
+</html>
